@@ -1,7 +1,5 @@
 - 👋 Hi, I’m @simransuresh
-- 👀 I’m interested in geodetic methods and applications to solve environmental issues.
-- 🌱 I’m currently learning satellite geodesy and related scientific programming.
-- 💞️ I’m looking to collaborate on projects related to satellite data assimilation, radar altimetry, GNSS-R, GNSS-IR, GNSS-RO
+- 👀 I’m interested in Satellite Geodesy, Data Assimilation in Geosciences and Climate change.
 - 📫 How to reach me simransuresh410@gmail.com
 
 <!---
