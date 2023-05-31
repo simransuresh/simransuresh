@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @simransuresh
-- 👀 I’m interested in Satellite Geodesy, Data Assimilation in Geosciences and Climate change.
+- 👀 I’m interested in Glacial hazards including droughts, outbursts, calving and seismic events. Atmosphere-ice-ocean-solid earth interactions also excites me. I incorporate Geodetic and Remote sensing satellite data in my research.
 - 📫 How to reach me simransuresh410@gmail.com
 
 <!---
