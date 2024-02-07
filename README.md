@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @simransuresh
-- 👀 I’m interested in Glacial hazards including droughts, outbursts, calving and seismic events. Atmosphere-ice-ocean-solid earth interactions also excites me. I incorporate Geodetic and Remote sensing satellite data in my research.
-- 📫 How to reach me simransuresh410@gmail.com
+- 👀 Primary research interests in Polar Oceanography and Climatology of the Arctic using satellite, in-situ observations and coupled models. I also like Ice shelf-ocean interactions, Cryoseismology and Subglacial hydrology.
+- 📫 How to reach me simransuresh410@gmail.com (or) simran.suresh@awi.de
 
 <!---
 simransuresh/simransuresh is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
