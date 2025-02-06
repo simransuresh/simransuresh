@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @simransuresh
-- 👀 Primary research interests in Polar Oceanography and Climatology of the Arctic using satellite, in-situ observations and coupled models. I also like Ice shelf-ocean interactions, Cryoseismology and Subglacial hydrology.
+- 👀 Primary research interests in Polar Meteorology. I use satellite, in-situ observations and coupled models. I also like Modeling Geohazards, Atmosphere-Ice-Ocean interactions.
 - 📫 How to reach me simransuresh410@gmail.com (or) simran.suresh@awi.de
 
 <!---
