@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @simransuresh
 - 👀 Primary research interests in Modeling Geohazards, Atmosphere-Ice-Ocean interactions. I use satellite, in-situ observations and coupled models.
-- 📫 How to reach me simransuresh410@gmail.com (or) simran.suresh@awi.de
+- 📫 How to reach me simransuresh410@gmail.com (or) simran.suresh@uni-graz.at
 
 <!---
 simransuresh/simransuresh is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
