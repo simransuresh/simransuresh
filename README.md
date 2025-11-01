@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @simransuresh
-- 👀 Primary research interests in Modeling Geohazards, Atmosphere-Ice-Ocean interactions. I use satellite, in-situ observations and coupled models.
+- 👀 Primary research interests in Modeling Geodynamics and Ice-Solid Earth interactions. I use satellite, in-situ observations and coupled models for climate change projects too.
 - 📫 How to reach me simransuresh410@gmail.com (or) simran.suresh@uni-graz.at
 
 <!---
