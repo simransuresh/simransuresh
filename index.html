@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simran Suresh</title>
+<meta name="description" content="Academic CV: research interests, education, experience, projects, conference posters, publications, and achievements.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --ink:    #1C1A17;
+    --paper:  #FAF8F3;
+    --side:   #F1ECE0;
+    --rule:   #1F3A5C;
+    --muted:  #6B6358;
+    --hair:   #DAD4C6;
+    --sidebar-w: 340px;
+    --layout-max: 1680px;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Source Serif 4', Georgia, serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- Centered page layout ---------- */
+  .layout{
+    max-width:var(--layout-max);
+    margin:0 auto;
+    display:flex;
+    align-items:flex-start;
+    min-height:100vh;
+  }
+
+  /* ---------- Sidebar (sticks while scrolling, centered as part of .layout) ---------- */
+  .sidebar{
+    position:sticky; top:0;
+    align-self:flex-start;
+    flex-shrink:0;
+    width:var(--sidebar-w);
+    height:100vh;
+    background:var(--side);
+    border-right:1px solid var(--hair);
+    padding:48px 28px;
+    overflow-y:auto;
+  }
+  .avatar{
+    width:108px; height:108px; border-radius:50%;
+    background:var(--rule);
+    color:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem; font-weight:600;
+    margin:0 auto 20px auto;
+    overflow:hidden;
+  }
+  .avatar img{width:100%; height:100%; object-fit:cover; display:block;}
+  .sidebar h1{
+    font-size:1.3rem; font-weight:600; text-align:center;
+    margin:0 0 4px 0;
+  }
+  .sidebar .title-line{
+    text-align:center; font-size:0.9rem; color:var(--muted); margin:0 0 2px 0;
+  }
+  .sidebar .affil-line{
+    text-align:center; font-size:0.86rem; color:var(--muted); margin:0 0 22px 0;
+  }
+  .sidebar .rule{
+    width:40px; height:2px; background:var(--rule); border:none;
+    margin:0 auto 22px auto;
+  }
+  .sidebar .contact-label{
+    font-size:0.7rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--rule); margin:0 0 10px 0;
+  }
+  .sidebar .contact-list{list-style:none; margin:0 0 8px 0; padding:0;}
+  .sidebar .contact-list li{
+    font-size:0.84rem; color:var(--ink); margin-bottom:8px; word-break:break-word;
+  }
+  .sidebar .contact-list .k{
+    display:block; font-size:0.68rem; color:var(--muted);
+    text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1px;
+  }
+  .sidebar .contact-list a{color:var(--rule); text-decoration:none;}
+  .sidebar .contact-list a:hover{text-decoration:underline;}
+
+  /* ---------- Main area ---------- */
+  .main{
+    flex:1;
+    min-width:0;
+    min-height:100vh;
+  }
+
+  .tabs{
+    position:sticky; top:0; z-index:10;
+    display:flex; gap:2px;
+    background:var(--paper);
+    border-bottom:1px solid var(--hair);
+    padding:0 32px;
+    overflow-x:auto;
+    white-space:nowrap;
+    scrollbar-width:thin;
+  }
+  .tab-btn{
+    appearance:none; background:none; border:none;
+    font-family:'Source Serif 4', Georgia, serif;
+    font-size:0.8rem;
+    letter-spacing:0.02em;
+    color:var(--muted);
+    padding:18px 8px 14px 8px;
+    cursor:pointer;
+    border-bottom:2px solid transparent;
+    flex-shrink:0;
+  }
+  .tab-btn:hover{color:var(--ink);}
+  .tab-btn.active{
+    color:var(--rule);
+    border-bottom-color:var(--rule);
+    font-weight:600;
+  }
+  .tab-btn:focus-visible{outline:2px solid var(--rule); outline-offset:2px;}
+
+  .tab-content{padding:44px 32px 80px 32px; max-width:none;}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block; animation:fade 0.25s ease;}
+  @keyframes fade{ from{opacity:0;} to{opacity:1;} }
+  @media (prefers-reduced-motion: reduce){ .tab-panel.active{animation:none;} }
+
+  .tab-panel h2{font-size:1.4rem; font-weight:600; margin:0 0 18px 0;}
+
+  p{margin:0 0 12px 0;}
+  .lede{font-size:1rem;}
+  ul.plain{margin:0; padding:0 0 0 1.15em;}
+  ul.plain li{margin-bottom:8px;}
+
+  /* ---------- Entry rows ---------- */
+  .entry{margin-bottom:20px;}
+  .entry-top{display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;}
+  .entry-top h3{font-size:1.04rem; font-weight:600; margin:0;}
+  .entry-when{font-size:0.88rem; color:var(--muted); white-space:nowrap; font-style:italic;}
+  .entry-where{font-size:0.92rem; color:var(--muted); margin-top:2px;}
+  .entry p.desc{margin-top:6px; font-size:0.96rem;}
+  .entry p.thesis{margin-top:6px; font-size:0.96rem; font-style:italic;}
+
+  /* ---------- Footnote / legend lines ---------- */
+  .legend{font-size:0.85rem; color:var(--muted); font-style:italic; margin-top:14px;}
+
+  /* ---------- Bibliography lists ---------- */
+  .biblio{margin:0; padding:0; list-style:none; counter-reset:biblio;}
+  .biblio li{counter-increment:biblio; margin-bottom:14px; padding-left:2.1em; position:relative; font-size:0.97rem;}
+  .biblio li::before{content:"[" counter(biblio) "]"; position:absolute; left:0; top:0; color:var(--muted); font-size:0.9rem;}
+  .biblio .status{color:var(--muted); font-style:italic; font-size:0.9rem;}
+
+  /* ---------- Projects ---------- */
+  .project{margin-bottom:18px;}
+  .project h3{font-size:1.0rem; font-weight:600; margin:0 0 3px 0;}
+  .project .tools{font-size:0.84rem; color:var(--muted); font-style:italic; margin:2px 0 4px 0;}
+  .project p{font-size:0.95rem; margin:0;}
+
+  .interests-line{font-size:0.96rem;}
+
+  a{color:var(--rule); text-decoration:underline;}
+  a:focus-visible{outline:2px solid var(--rule); outline-offset:2px;}
+
+  /* ---------- Responsive: collapse sidebar on small screens ---------- */
+  @media (max-width:760px){
+    .layout{flex-direction:column;}
+    .sidebar{
+      position:static; width:100%; height:auto; border-right:none;
+      border-bottom:1px solid var(--hair);
+      padding:32px 24px;
+    }
+    .tabs{padding:0 16px;}
+    .tab-content{padding:32px 20px 60px 20px;}
+  }
+
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ===================== SIDEBAR (sticky) ===================== -->
+  <aside class="sidebar">
+    <div class="avatar">
+      <!-- Replace this fallback with: <img src="photo.jpg" alt="Your Name"> -->
+      <img src="simran.jpg" alt="Simran Suresh">
+    </div>
+    <h1>Simran Suresh</h1>
+    <p class="title-line">Research Scientist (PhD)</p>
+    <p class="affil-line">University of Graz, Austria</p>
+    <hr class="rule">
+
+    <p class="contact-label">Contact</p>
+    <ul class="contact-list">
+      <li><span class="k">Email</span><a href="mailto:simran.suresh@uni-graz.at" target="_blank" rel="noopener noreferrer">simran.suresh@uni-graz.at</a></li>
+      <li><span class="k">GitHub</span><a href="https://github.com/simransuresh" target="_blank" rel="noopener noreferrer">github.com/simransuresh</a></li>
+      <li><span class="k">ORCID</span><a href="https://orcid.org/0009-0004-0477-1600" target="_blank" rel="noopener noreferrer">orcid.org/0009-0004-0477-1600</a></li>
+      <li><span class="k">Scholar</span><a href="https://scholar.google.com/citations?user=YlQ4ggcAAAAJ" target="_blank" rel="noopener noreferrer">scholar.google.com/citations?user=YlQ4ggcAAAAJ</a></li>
+      <li><span class="k">Location</span>Vienna, Austria &middot; <span id="local-time"></span></li>
+    </ul>
+  </aside>
+
+  <!-- ===================== MAIN (tabs + panels) ===================== -->
+  <div class="main">
+
+    <nav class="tabs" role="tablist" aria-label="CV sections">
+      <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-about" id="tab-about" data-target="panel-about">About</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-research" id="tab-research" data-target="panel-research">Interests</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-education" id="tab-education" data-target="panel-education">Education</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-experience" id="tab-experience" data-target="panel-experience">Experience</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-teaching" id="tab-teaching" data-target="panel-teaching">Teaching</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-projects" id="tab-projects" data-target="panel-projects">Projects</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-fieldwork" id="tab-fieldwork" data-target="panel-fieldwork">Field Work</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-posters" id="tab-posters" data-target="panel-posters">Posters</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-publications" id="tab-publications" data-target="panel-publications">Publications</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-achievements" id="tab-achievements" data-target="panel-achievements">Achievements</button>
+      <!-- <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-hobbies" id="tab-hobbies" data-target="panel-hobbies">Hobbies</button> -->
+        <!-- add Findings section in left Panel TODO -->
+    </nav>
+
+    <div class="tab-content">
+
+      <div class="tab-panel active" id="panel-about" role="tabpanel" aria-labelledby="tab-about">
+        <p class="lede">I am a computational geoscientist doing my PhD. I investigate solid Earth and surface processes, using numerical models and geophysical datasets to understand how tectonics and landscapes interact and evolve.</p>
+        <p class="lede">The Earth we live in is fascinating to me. It changes accordingly to the posed constraints by nature and humans. Therefore, it is interesting and important to study its dynamics. 
+            I am interested in the geophysics part of geosciences and love the regions especially covered by snow and ice. Today, the communities living there face geohazards due to the direct impact of the warming temperature-melting ice-rising sea level regimes. 
+        However we are in a deglacial period right now that causes this melting and therefore, by studying the geology of the past, we can understand how past and future glaciations impact the landscapes. 
+        This is the motivation of my research at the intersection of tectonics, seismology, glaciology and geomorphology.  </p>
+        <p style="margin-top:20px;"><b>Models:</b> ASPECT, GWB, OpenLEM, FESOM2</p>
+        <p style="margin-top:20px;"><b>Datasets:</b> Litho1.0 geophysical, Slab2.0 geodynamic, PANGEA Arctic oceanographic, GRACE satellite gravimetry, Sentinel satellite altimetry, GRDC river gauge, GNSS vertical displacement data, ERA5 reanalysis snow datasets, EOBS climate variables</p>
+        <p style="margin-top:20px;"><b>Tools:</b> Python, MATLAB, C++, Linux/MacOS</p>
+        <p style="margin-top:20px;"><b>Personal:</b><br>
+            Citizenship: India<br>
+            Status: Married<br>
+            Hobbies: Badminton, skiing, reading novels in winter,<br>
+            Swimming, trekking, gardening in summer
+        </p>
+      </div>
+
+      <div class="tab-panel" id="panel-research" role="tabpanel" aria-labelledby="tab-research">
+        <!-- <h2>Interests</h2> -->
+        <ol class="plain">
+          <li>Numerical modeling of coupled tectonic geomorphological processes</li>
+          <li>Subduction zone uplift, glacial erosion, oblique strike-slip faulting, cryoseismic events</li>
+          <li>Open source development for interdisciplinary scientific communities - Glaciology, Seismology</li>
+          <li>Entrepreneur/Scientist as processing and analysing climate data contributing to the climate change crisis </li>
+        </ol>
+      </div>
+
+      <div class="tab-panel" id="panel-education" role="tabpanel" aria-labelledby="tab-education">
+        <!-- <h2>Education</h2> -->
+        <div class="entry">
+          <div class="entry-top"><h3>Doctorate in Earth Sciences</h3><span class="entry-when">2026-2029</span></div>
+          <p class="entry-where">University of Graz, Austria</p>
+          <p class="desc"><i>Skills:</i> Deep mantle geophysics, Tectonic basin formation, Seismicity, Geomorphological processes, Numerical modelling</p>
+          <p class="thesis"><i>Thesis:</i> Numerical modelling of tectonic and surface processes at subduction-oblique strike-slip settings using ASPECT, Geodynamic World Builder and OpenLEM.</p>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><h3>Master of Science, Geodetic Engineering</h3><span class="entry-when">2021-2023</span></div>
+          <p class="entry-where">University of Bonn, Germany</p>
+          <p class="desc"><i>Skills:</i> Satellite Geodesy, Altimetry, Gravimetry, GNSS, Remote sensing</p>
+          <p class="thesis"><i>Thesis:</i> Identifying temporal signatures of streamflow in snow datasets</p>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><h3>Diploma in Business Management, Analytics and Machine learning</h3><span class="entry-when">2019-2020</span></div>
+          <p class="entry-where">Institute of Management and Technology, India</p>
+          <p class="desc"><i>Skills:</i> Entrepreneurship, Business strategy, Governance, Deep learning</p>
+          <p class="thesis"><i>Thesis:</i> Using deep learning strategies to track and improve revenue growth.</p>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><h3>Bachelor of Engineering, Electronics and Communications</h3><span class="entry-when">2013-2017</span></div>
+          <p class="entry-where">Anna University Chennai, India</p>
+          <p class="desc"><i>Skills:</i> Signal processing, Satellite Communications</p>
+          <p class="thesis"><i>Thesis:</i> Air pollution monitoring using Internet of Things and Machine learning</p>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="panel-experience" role="tabpanel" aria-labelledby="tab-experience">
+        <!-- <h2>Experience</h2> -->
+        <div class="entry">
+          <div class="entry-top"><h3>University Assistant - Doctoral Researcher</h3><span class="entry-when">2025-present</span></div>
+          <p class="entry-where">University of Graz, Austria</p>
+          <p class="desc"><i>Role:</i> Numerical modelling, Geodynamics, Tectonics, Geomorphology, Tutoring.</p>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><h3>Research Assistant</h3><span class="entry-when">2024-2025</span></div>
+          <p class="entry-where">Alfred Wegener Institute, Bremerhaven, Germany</p>
+          <p class="desc"><i>Role:</i> Climate dataset collection, curation, processing and analysis, interpolation schemes, Field work.</p>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><h3>Scientific Assistant - Masters thesis</h3><span class="entry-when">2023</span></div>
+          <p class="entry-where">ForschungsZentrum Juelich, Germany</p>
+          <p class="desc"><i>Role:</i> Snow dataset processing, Scientific analysis, Visualization</p>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><h3>Student Assistant</h3><span class="entry-when">2022-2023</span></div>
+          <p class="entry-where">University of Bonn, Germany</p>
+          <p class="desc"><i>Role:</i> GNSS data processing, spatio-temporal filtering, trend analysis, tutoring</p>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><h3>Student Assistant</h3><span class="entry-when">2021-2023</span></div>
+          <p class="entry-where">GeoForschungsZentrum Potsdam, Germany</p>
+          <p class="desc"><i>Role:</i> Gravity field computation, corrections, Visualization</p>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><h3>Scientific Programmer</h3><span class="entry-when">2017-2021</span></div>
+          <p class="entry-where">India</p>
+          <p class="desc"><i>Role:</i> Python programming, Scientific analysis, Algorithm development</p>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="panel-teaching" role="tabpanel" aria-labelledby="tab-teaching">
+        <div class="entry">
+          <div class="entry-top"><h3>Tutoring for Python programming course</h3><span class="entry-when">S2026,</span></div>
+          <p class="entry-where">University of Graz, Austria</p>
+          <p class="desc"><i>Role:</i> Tutoring bachelor students alongside doctoral research duties.</p>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><h3>Tutoring for Satellite geodesy module</h3><span class="entry-when">W2023</span></div>
+          <p class="entry-where">University of Bonn, Germany</p>
+          <p class="desc"><i>Role:</i> Tutoring master students alongside student research assistant duties.</p>
+        </div>
+      </div>
+
+            <div class="tab-panel" id="panel-projects" role="tabpanel" aria-labelledby="tab-projects">
+        <!-- <h2>Projects</h2> -->
+        <div class="entry">
+          <div class="entry-top"><h3>3D tectonic and geomorphological modeling of subduction and oblique strike-slip fault setting</h3><span class="entry-when">2025-2029</span></div>
+          <p class="entry-where">University of Graz internal grant &middot; 217000 EUR</p>
+          <p class="desc"><i>Tools:</i> ASPECT, Geodynamic World Builder, OpenLEM</p>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><h3>Cryoseismic model for Glaciology-Seismology community</h3><span class="entry-when">2026-2028</span></div>
+          <p class="entry-where">Self-funded interdisciplinary passion project</p>
+          <p class="desc"><i>Tools:</i> Numerical modeling, Subglacial deformation, Seismicity</p>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><h3>pyoceanmap</h3><span class="entry-when">2024-2025</span></div>
+          <p class="entry-where">Alfred Wegener Institute internal grant &middot; 51000 EURO</p>
+          <p class="desc"><i>Tools:</i> Python, Satellite ata analysis, Oceanography</p>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><h3>Climatic and snow control on streamflow timing</h3><span class="entry-when">2023</span></div>
+          <p class="entry-where">ForschungsZentrum Juelich masters thesis internal grant &middot; 9000 EUR</p>
+          <p class="desc"><i>Tools:</i> Python, Satellite data analysis, Hydrology</p>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><h3>GNSS and river gauge altimetry</h3><span class="entry-when">2022-2023</span></div>
+          <p class="entry-where">University of Bonn internal grant &middot; 9500 EUR</p>
+          <p class="desc"><i>Tools:</i> Python, Data analysis</p>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><h3>ICGEM, GRAVIS portal</h3><span class="entry-when">2021-2023</span></div>
+          <p class="entry-where">GeoForschungsZentrum Potsdam Section 1.2 internal grant &middot; 8000 EUR</p>
+          <p class="desc"><i>Tools:</i> Python, GRACE processing, Global gravity</p>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><h3>Air pollution monitoring using IoT and Machine learning</h3><span class="entry-when">2017</span></div>
+          <p class="entry-where">Self-funded bachelor thesis &middot; 500 EUR</p>
+          <p class="desc"><i>Tools:</i> Arduino, AWS Machine learning, Sensor signal processing</p>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="panel-fieldwork" role="tabpanel" aria-labelledby="tab-fieldwork">
+        <ol class="plain">
+          <li>Styria geology, Austria &mdash; May 2026</li> 
+          <li>RV Polarstern expedition PS144, Central Arctic Ocean &mdash; Aug-Oct 2024</li>
+          <li>Field campaign, Otzal Alps, Austria &mdash; Jun 2024</li>
+          <li>Field campaign, North Sea &mdash; Apr 2024</li>
+          <!-- TODO add some pictures -->
+        </ol>
+      </div>
+
+      <div class="tab-panel" id="panel-posters" role="tabpanel" aria-labelledby="tab-posters">
+        <!-- <h2>Conference Posters &amp; Presentations</h2> -->
+        <ol class="biblio">
+        <li>Connecting deep mantle and surface processes in New Zealand using 3D numerical models. 
+            <span class="status">[Ada Lovelace Workshop, Pardubice, Czech Republic, Jun 2026]</span></li> 
+        <li>Past decadal changes in the Transpolar Drift stream. 
+            <span class="status">[Polar Marine Science - Gordon Research Conference, Florence, Italy, Mar 2025]</span></li> 
+        <li>*Recent regime transition of the Arctic Beaufort gyre. 
+            <span class="status">[RV Polarstern, Central Arctic, Sep 2024]</span></li>
+        <li>Central Arctic Ocean circulation dynamics under changing freshwater regimes. 
+            <span class="status">[Geophysical Fluid Dynamics summer school, Paris, France, May 2024]</span></li>
+        <li>Identifying trends in temporal signatures of snow and their impact on catchment hydrology over Europe during 2000-
+2022.      <span class="status">[Snow Hydrology, Grenoble, France, Jan 2024]</span></li>
+        <li>**Assessing uncertainties in snow-related variables using ensemble-based simulations of CLM5 over European sites. 
+            <span class="status">[Snow Hydrology, Grenoble, France, Jan 2024]</span></li>
+        <li>**Using GNSS-IR and the ARIMA Model to Forecast Changes in Glacier Surface Elevation: A Case Study.      
+            <span class="status">[EGU, Vienna, Austria, May 2023]</span></li>
+               
+        </ol>
+        <p class="legend">[* invited talk]<br>[** coauthor]</p>
+      </div>
+
+      <div class="tab-panel" id="panel-publications" role="tabpanel" aria-labelledby="tab-publications">
+        <!-- <h2>Publications</h2> -->
+        <ol class="biblio">
+          <li>[<b>Simran Suresh</b>]. pyoceanmap: a Python package for objective mapping of polar ocean data. <span class="status">In preparation, Journal of Open Source Software 2026</span></li>
+          <li>[<b>Simran Suresh</b>, Bibi S Naz, Gabrielle de Lannoy]. Precipitation, not temperature, now dominates streamflow timing shifts across Europe. <span class="status">In preparation, Communications Earth &amp; Environment 2026</span></li>
+          <li>[Jacob Allerholt, Ke-Hsien Fu, Céline Heuzé, Mario Hoppmann, Oliver Huhn, Benjamin Rabe, <b>Simran Suresh</b>, Sandra Tippenhauer, Hau-Man Wong, Jialiang Zhu, John M Walter, Sylvia Cole, Jeff O Brien, Nathalie Sennéchael, Matthieu Labaste, Birgit Klein, Meike Martins]. Grant-No. AWI_PS144_03 <span class="status">Journal Polarstern 2024.</span></li>
+          <li>[Sven Reißland, Elmas Sinem Ince, <b>Simran Suresh</b>, Christoph Förste, Frank Flechtner]. The current progress of the ICGEM and its updated G3 (GFZ GRACE Gravity) Browser. <span class="status">GFZ German Research Centre for Geosciences 2023</span></li>
+          
+        </ol>
+      </div>
+
+      <div class="tab-panel" id="panel-achievements" role="tabpanel" aria-labelledby="tab-achievements">
+        <!-- <h2>Achievements</h2> -->
+        <ol class="plain">
+          <li>Indian patent for my bachelor project, Patent number 391498 [2022]</li>
+          <li>Undergraduate University Topper Rank 39 in India [2018]</li>
+          <li>Graduate Aptitude Test in Engineering All India Rank 7233 [2017]</li>
+          <li>Indian Engineering Olympiad All India Rank 15 [2017]</li>
+          <li>Indian Engineering Olympiad All India Rank 34 [2016]</li>
+          <li>Rajyapuraskar State Award in India for Overall Excellence [2012]</li>
+          <li>Heerak Pankh award for Green Citizen India [2010]</li>
+          <li>Golden Arrow Badge for Bravery and Volunteering India [2010]</li>
+        </ol>
+      </div>
+
+      <div class="tab-panel" id="panel-interests" role="tabpanel" aria-labelledby="tab-interests">
+        <!-- <h2>Interests</h2> -->
+        <ol class="plain">
+          <li>Badminton and reading novels in winter</li>
+          <li>Swimming, Trekking, Gardening in summer</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function updateLocalTime(){
+    const el = document.getElementById('local-time');
+    if(!el) return;
+    const now = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/Vienna',
+      hour: '2-digit',
+      minute: '2-digit'
+    }).format(new Date());
+    el.textContent = now + ' local';
+  }
+  updateLocalTime();
+  setInterval(updateLocalTime, 30000);
+
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      panels.forEach(p => p.classList.remove('active'));
+
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      document.getElementById(tab.dataset.target).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
